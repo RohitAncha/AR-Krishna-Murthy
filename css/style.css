@@ -171,9 +171,9 @@ html[lang="te"] .kicker{letter-spacing:.1em}
 /* ---------- galleries ---------- */
 .gallery-section{padding:clamp(4rem,10vw,7rem) 0;border-top:1px solid var(--line)}
 .gallery-section.alt{background:var(--paper-2)}
-.gallery-grid{columns:280px;column-gap:1.2rem;margin-top:2.5rem}
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem;margin-top:2.5rem}
 .g-item{
-  break-inside:avoid;margin-bottom:1.2rem;background:#fff;padding:.6rem .6rem 0;cursor:zoom-in;
+  background:#fff;padding:.6rem .6rem 0;cursor:zoom-in;
   box-shadow:0 10px 30px rgba(26,20,16,.1);transition:transform .35s ease,box-shadow .35s ease;
 }
 .g-item:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(26,20,16,.18)}
