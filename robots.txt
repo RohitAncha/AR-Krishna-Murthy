@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rohit ancha.github.io/AR-Krishna-Murthy/sitemap.xml
+Sitemap: https://www.arkrishna.com/sitemap.xml
