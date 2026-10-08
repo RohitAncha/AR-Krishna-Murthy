@@ -1,0 +1,213 @@
+/* Ancha Radhakrishna Murthy — family archive */
+:root{
+  --paper:#f6f1e6;
+  --paper-2:#ece3cf;
+  --ink:#1a1410;
+  --ink-soft:#57493a;
+  --bronze:#b08d57;
+  --bronze-deep:#8a6a3c;
+  --night:#131009;
+  --night-2:#1c1610;
+  --line:rgba(26,20,16,.14);
+  --font-display:'Cormorant Garamond','Noto Serif Telugu',serif;
+  --font-body:'Inter','Noto Serif Telugu',system-ui,sans-serif;
+}
+html[lang="te"]{ --font-display:'Noto Serif Telugu','Cormorant Garamond',serif; }
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-body);
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+.wrap{max-width:1120px;margin:0 auto;padding:0 clamp(1.25rem,4vw,2.5rem)}
+
+/* ---------- preloader ---------- */
+.preloader{
+  position:fixed;inset:0;z-index:200;background:var(--night);
+  display:flex;align-items:center;justify-content:center;
+  transition:opacity .8s ease,visibility .8s;
+}
+.preloader.done{opacity:0;visibility:hidden}
+.preloader-name{
+  color:var(--paper);font-family:var(--font-display);
+  letter-spacing:.35em;font-size:clamp(.8rem,2.5vw,1.1rem);text-align:center;padding:0 1rem;
+  animation:pulse 1.6s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{opacity:.45}50%{opacity:1}}
+
+/* ---------- header ---------- */
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem clamp(1.25rem,4vw,2.5rem);
+  transition:background .35s ease,box-shadow .35s ease;
+}
+.site-header.scrolled{background:rgba(19,16,9,.88);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(246,241,230,.08)}
+.brand{
+  color:var(--paper);text-decoration:none;font-family:var(--font-display);
+  letter-spacing:.3em;font-size:1rem;font-weight:600;
+}
+.site-nav{display:flex;gap:1.6rem}
+.site-nav a{
+  color:rgba(246,241,230,.82);text-decoration:none;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;
+  transition:color .25s;
+}
+.site-nav a:hover{color:var(--bronze)}
+.lang-toggle{
+  display:flex;align-items:center;gap:.5rem;cursor:pointer;
+  background:rgba(246,241,230,.1);border:1px solid rgba(246,241,230,.35);border-radius:999px;
+  color:var(--paper);padding:.42rem .9rem;font-size:.8rem;letter-spacing:.06em;
+  transition:background .25s,border-color .25s;font-family:var(--font-body);
+}
+.lang-toggle:hover{background:rgba(246,241,230,.2)}
+.lang-opt{opacity:.55;transition:opacity .25s}
+.lang-opt.active{opacity:1;color:var(--bronze);font-weight:600}
+.lang-sep{width:1px;height:.9em;background:rgba(246,241,230,.35)}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;
+  overflow:hidden;background:var(--night);text-align:center;color:var(--paper);
+}
+.hero-bg{
+  position:absolute;inset:-4%;
+  background:url('../assets/images/portraits/sculpting-president-radhakrishnan.jpg') center 30%/cover no-repeat;
+  animation:kenburns 26s ease-in-out infinite alternate;
+  filter:saturate(.82) contrast(1.04);
+}
+@keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.12)}}
+.hero-veil{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse at center,rgba(10,8,5,.25) 0%,rgba(10,8,5,.78) 100%),
+    linear-gradient(to bottom,rgba(10,8,5,.55) 0%,rgba(10,8,5,.15) 35%,rgba(10,8,5,.55) 100%);
+}
+.hero-inner{position:relative;z-index:2;padding:6rem 1.25rem 4rem;max-width:1100px}
+.kicker{
+  font-size:.78rem;letter-spacing:.42em;text-transform:uppercase;color:var(--bronze);
+  margin-bottom:1.4rem;font-weight:600;
+}
+html[lang="te"] .kicker{letter-spacing:.1em}
+.hero-name{
+  font-family:var(--font-display);font-weight:600;
+  font-size:clamp(2.6rem,10.5vw,7.5rem);line-height:1.02;letter-spacing:.04em;
+  text-shadow:0 3px 30px rgba(0,0,0,.55);
+}
+.hero-name span{display:block}
+.hero-tag{
+  margin:1.6rem auto 0;max-width:34rem;font-size:clamp(1rem,2.4vw,1.25rem);
+  font-style:italic;font-family:var(--font-display);color:rgba(246,241,230,.92);line-height:1.6;
+}
+.scroll-cue{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:2;opacity:.75}
+.scroll-cue span{
+  display:block;width:26px;height:44px;border:2px solid rgba(246,241,230,.7);border-radius:14px;position:relative;
+}
+.scroll-cue span::after{
+  content:'';position:absolute;top:8px;left:50%;width:4px;height:9px;margin-left:-2px;border-radius:2px;
+  background:var(--bronze);animation:cue 1.8s ease-in-out infinite;
+}
+@keyframes cue{0%{transform:translateY(0);opacity:1}60%{transform:translateY(12px);opacity:0}100%{opacity:0}}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ---------- intro ---------- */
+.intro{padding:clamp(4rem,10vw,7.5rem) 0;background:var(--paper)}
+.chapter-title,.section-title{
+  font-family:var(--font-display);font-weight:600;
+  font-size:clamp(2rem,5.5vw,3.4rem);line-height:1.15;margin-bottom:1.8rem;
+}
+.intro-body{max-width:46rem}
+.intro-body p{font-size:clamp(1.05rem,2.4vw,1.3rem);color:var(--ink-soft);margin-bottom:1.2rem}
+.intro-body p:last-child{color:var(--ink);font-weight:500}
+
+/* ---------- chapters ---------- */
+.chapter{padding:clamp(3.5rem,9vw,6.5rem) 0;border-top:1px solid var(--line)}
+.chapter h3{
+  font-family:var(--font-display);font-weight:600;
+  font-size:clamp(1.7rem,4.5vw,2.6rem);margin-bottom:1.2rem;line-height:1.2;
+}
+.chapter-text p{margin-bottom:1.1rem;color:var(--ink-soft);max-width:38rem;font-size:1.02rem}
+.source{font-size:.8rem;letter-spacing:.08em;color:var(--bronze-deep);text-transform:uppercase;margin-top:1.4rem}
+.chapter-grid{display:grid;gap:2.5rem;align-items:start}
+@media(min-width:880px){.chapter-grid{grid-template-columns:1fr 1fr}}
+.chapter-figure{background:#fff;padding:.7rem .7rem 0;box-shadow:0 18px 50px rgba(26,20,16,.16);transform:rotate(-.6deg)}
+.chapter-figure img{width:100%;height:auto;filter:sepia(.14) contrast(1.02)}
+.chapter-figure figcaption{padding:.9rem .4rem 1rem;font-size:.88rem;color:var(--ink-soft);font-style:italic}
+.chapter-media .chapter-grid{align-items:center}
+.figure-wide{max-width:880px;margin:2.5rem auto 0;transform:none}
+.chapter-dark{background:var(--night);color:var(--paper);border-top:none}
+.chapter-dark .chapter-text p,.chapter-dark .chapter-lede p{color:rgba(246,241,230,.85)}
+.chapter-dark h3{color:var(--paper)}
+.chapter-dark .kicker{color:var(--bronze)}
+.chapter-dark .source{color:var(--bronze)}
+.chapter-dark .chapter-figure{background:#221b12;box-shadow:0 18px 60px rgba(0,0,0,.5)}
+.chapter-dark .chapter-figure figcaption{color:rgba(246,241,230,.7)}
+.chapter-lede{max-width:52rem;margin-bottom:.5rem}
+.chapter-lede p{font-size:clamp(1.1rem,2.6vw,1.4rem)!important;font-family:var(--font-display);line-height:1.65}
+.closing-line{font-family:var(--font-display);font-size:1.5rem!important;color:var(--ink)!important;font-style:italic;margin-top:1.6rem}
+
+/* ---------- timeline ---------- */
+.timeline-section{padding:clamp(4rem,10vw,7rem) 0;background:var(--paper-2);border-top:1px solid var(--line)}
+.timeline{list-style:none;margin-top:2.5rem;position:relative;padding-left:1.2rem}
+.timeline::before{content:'';position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:var(--bronze);opacity:.55}
+.timeline li{position:relative;padding:0 0 2.2rem 2.2rem}
+.timeline li::before{
+  content:'';position:absolute;left:-1.2rem;top:8px;width:16px;height:16px;border-radius:50%;
+  background:var(--paper-2);border:3px solid var(--bronze);
+}
+.t-date{
+  font-family:var(--font-display);font-weight:700;font-size:1.35rem;color:var(--bronze-deep);
+  display:block;margin-bottom:.3rem;
+}
+.timeline p{color:var(--ink-soft);max-width:44rem}
+
+/* ---------- galleries ---------- */
+.gallery-section{padding:clamp(4rem,10vw,7rem) 0;border-top:1px solid var(--line)}
+.gallery-section.alt{background:var(--paper-2)}
+.gallery-grid{columns:280px;column-gap:1.2rem;margin-top:2.5rem}
+.g-item{
+  break-inside:avoid;margin-bottom:1.2rem;background:#fff;padding:.6rem .6rem 0;cursor:zoom-in;
+  box-shadow:0 10px 30px rgba(26,20,16,.1);transition:transform .35s ease,box-shadow .35s ease;
+}
+.g-item:hover{transform:translateY(-4px);box-shadow:0 18px 44px rgba(26,20,16,.18)}
+.g-item img{width:100%;height:auto;filter:sepia(.12) contrast(1.02)}
+.g-item figcaption{padding:.8rem .3rem .9rem;font-size:.85rem;color:var(--ink-soft);font-style:italic;line-height:1.5}
+
+/* ---------- footer ---------- */
+.site-footer{background:var(--night);color:var(--paper);text-align:center;padding:4.5rem 1.25rem}
+.footer-name{font-family:var(--font-display);letter-spacing:.22em;font-size:clamp(1rem,3.4vw,1.5rem);margin-bottom:1rem;color:var(--bronze)}
+.site-footer p:last-child{color:rgba(246,241,230,.65);font-size:.95rem}
+
+/* ---------- lightbox ---------- */
+.lightbox{
+  position:fixed;inset:0;z-index:300;background:rgba(10,8,5,.94);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;
+  opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s;
+}
+.lightbox.open{opacity:1;visibility:visible}
+.lightbox img{max-width:min(92vw,1000px);max-height:78vh;object-fit:contain;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lightbox p{color:rgba(246,241,230,.8);margin-top:1rem;font-style:italic;max-width:40rem;text-align:center}
+.lightbox-close{
+  position:absolute;top:1.2rem;right:1.6rem;background:none;border:none;color:var(--paper);
+  font-size:2.6rem;cursor:pointer;line-height:1;opacity:.8;
+}
+.lightbox-close:hover{opacity:1}
+
+/* ---------- responsive ---------- */
+@media(max-width:760px){
+  .site-nav{display:none}
+  .hero-name{letter-spacing:.02em}
+  .chapter-figure{transform:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-bg{animation:none}
+  .reveal{transition:none;opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
