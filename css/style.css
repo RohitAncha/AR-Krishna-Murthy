@@ -183,6 +183,7 @@ html[lang="te"] .kicker{letter-spacing:.1em}
 /* ---------- footer ---------- */
 .site-footer{background:var(--night);color:var(--paper);text-align:center;padding:4.5rem 1.25rem}
 .footer-name{font-family:var(--font-display);letter-spacing:.22em;font-size:clamp(1rem,3.4vw,1.5rem);margin-bottom:1rem;color:var(--bronze)}
+.footer-years{letter-spacing:.34em;color:rgba(246,241,230,.55);margin-bottom:1.1rem;font-size:.95rem;text-indent:.34em}
 .site-footer p:last-child{color:rgba(246,241,230,.65);font-size:.95rem}
 
 /* ---------- lightbox ---------- */
