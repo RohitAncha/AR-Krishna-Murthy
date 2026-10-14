@@ -212,3 +212,10 @@ html[lang="te"] .kicker{letter-spacing:.1em}
   .reveal{transition:none;opacity:1;transform:none}
   html{scroll-behavior:auto}
 }
+
+.figure-pair{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;align-items:start}
+.figure-pair .chapter-figure{margin:0}
+.figure-pair .chapter-figure:nth-child(2){transform:rotate(.7deg)}
+.swap-hint{font-size:.78rem;opacity:.55;font-style:italic;margin:-.4rem 0 1rem;padding:0 .4rem}
+.photo-swap img{cursor:pointer;-webkit-touch-callout:none;user-select:none;-webkit-user-select:none}
+@media(max-width:720px){.figure-pair{grid-template-columns:1fr}}
