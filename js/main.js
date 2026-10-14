@@ -103,4 +103,25 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
   });
+
+  /* ---------- sitar photos: hold to reveal the original scan ---------- */
+  document.querySelectorAll('.photo-swap img').forEach(function (img) {
+    var hd = img.getAttribute('src');
+    var orig = img.getAttribute('data-original');
+    if (!orig) return;
+    try { new Image().src = orig; } catch (e) {} // preload for instant swap
+    var timer = null;
+    function showHd() { clearTimeout(timer); timer = null; if (img.getAttribute('src') !== hd) img.setAttribute('src', hd); }
+    function startHold() {
+      clearTimeout(timer);
+      timer = setTimeout(function () { img.setAttribute('src', orig); }, 450);
+    }
+    img.addEventListener('touchstart', startHold, { passive: true });
+    img.addEventListener('mousedown', startHold);
+    ['touchend', 'touchcancel', 'mouseup', 'mouseleave'].forEach(function (ev) {
+      img.addEventListener(ev, showHd, { passive: true });
+    });
+    img.addEventListener('contextmenu', function (e) { e.preventDefault(); });
+    img.setAttribute('draggable', 'false');
+  });
 })();
