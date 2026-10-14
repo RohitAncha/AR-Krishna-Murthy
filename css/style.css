@@ -76,7 +76,7 @@ img{max-width:100%;display:block}
 }
 .hero-bg{
   position:absolute;inset:-4%;
-  background:url('../assets/images/portraits/sculpting-president-radhakrishnan.jpg') center 30%/cover no-repeat;
+  background:url('../assets/images/portraits/ancha-sculpting-radhakrishnan-1962.jpg') center 30%/cover no-repeat;
   animation:kenburns 26s ease-in-out infinite alternate;
   filter:saturate(.82) contrast(1.04);
 }
