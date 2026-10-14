@@ -104,24 +104,31 @@
     if (e.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
   });
 
-  /* ---------- sitar photos: hold to reveal the original scan ---------- */
-  document.querySelectorAll('.photo-swap img').forEach(function (img) {
-    var hd = img.getAttribute('src');
-    var orig = img.getAttribute('data-original');
-    if (!orig) return;
-    try { new Image().src = orig; } catch (e) {} // preload for instant swap
-    var timer = null;
-    function showHd() { clearTimeout(timer); timer = null; if (img.getAttribute('src') !== hd) img.setAttribute('src', hd); }
-    function startHold() {
-      clearTimeout(timer);
-      timer = setTimeout(function () { img.setAttribute('src', orig); }, 450);
+  /* ---------- sitar photos: tap to compare restored vs original scan ---------- */
+  function compareBadgeText(fig) {
+    var lang = document.documentElement.getAttribute('lang') || 'en';
+    if (fig.classList.contains('showing-original')) {
+      return lang === 'te' ? '\u0c05\u0c38\u0c32\u0c41 \u0c38\u0c4d\u0c15\u0c3e\u0c28\u0c4d' : 'Original scan';
     }
-    img.addEventListener('touchstart', startHold, { passive: true });
-    img.addEventListener('mousedown', startHold);
-    ['touchend', 'touchcancel', 'mouseup', 'mouseleave'].forEach(function (ev) {
-      img.addEventListener(ev, showHd, { passive: true });
+    return lang === 'te' ? '\u0c2a\u0c41\u0c28\u0c30\u0c41\u0c26\u0c4d\u0c27\u0c30\u0c3f\u0c02\u0c1a\u0c3f\u0c28\u0c26\u0c3f' : 'Restored';
+  }
+  document.querySelectorAll('.photo-compare').forEach(function (fig) {
+    var frame = fig.querySelector('.compare-frame');
+    var badge = fig.querySelector('.compare-badge');
+    if (!frame || !badge) return;
+    badge.textContent = compareBadgeText(fig);
+    frame.addEventListener('click', function () {
+      fig.classList.toggle('showing-original');
+      badge.textContent = compareBadgeText(fig);
     });
-    img.addEventListener('contextmenu', function (e) { e.preventDefault(); });
-    img.setAttribute('draggable', 'false');
   });
+  var _applyLang = applyLang;
+  applyLang = function (lang) {
+    _applyLang(lang);
+    document.querySelectorAll('.photo-compare').forEach(function (fig) {
+      var badge = fig.querySelector('.compare-badge');
+      if (badge) badge.textContent = compareBadgeText(fig);
+    });
+  };
+
 })();
