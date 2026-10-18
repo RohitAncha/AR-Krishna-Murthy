@@ -107,7 +107,10 @@
   /* ---------- sitar photos: tap to compare restored vs original scan ---------- */
   function compareBadgeText(fig) {
     var lang = document.documentElement.getAttribute('lang') || 'en';
-    if (fig.classList.contains('showing-original')) {
+    var side = fig.classList.contains('showing-original') ? 'b' : 'a';
+    var custom = fig.getAttribute('data-badge-' + side + '-' + lang) || fig.getAttribute('data-badge-' + side + '-en');
+    if (custom) return custom;
+    if (side === 'b') {
       return lang === 'te' ? '\u0c05\u0c38\u0c32\u0c41 \u0c38\u0c4d\u0c15\u0c3e\u0c28\u0c4d' : 'Original scan';
     }
     return lang === 'te' ? '\u0c2a\u0c41\u0c28\u0c30\u0c41\u0c26\u0c4d\u0c27\u0c30\u0c3f\u0c02\u0c1a\u0c3f\u0c28\u0c26\u0c3f' : 'Restored';
