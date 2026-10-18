@@ -117,7 +117,8 @@
     var badge = fig.querySelector('.compare-badge');
     if (!frame || !badge) return;
     badge.textContent = compareBadgeText(fig);
-    frame.addEventListener('click', function () {
+    frame.addEventListener('click', function (e) {
+      e.stopPropagation();
       fig.classList.toggle('showing-original');
       badge.textContent = compareBadgeText(fig);
     });
