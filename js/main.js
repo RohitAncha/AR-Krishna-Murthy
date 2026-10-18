@@ -126,6 +126,38 @@
       badge.textContent = compareBadgeText(fig);
     });
   });
+  /* hint pill also toggles the compare */
+  document.querySelectorAll('.photo-compare .swap-hint').forEach(function (hint) {
+    hint.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var fig = hint.closest('.photo-compare');
+      if (!fig) return;
+      fig.classList.toggle('showing-original');
+      var badge = fig.querySelector('.compare-badge');
+      if (badge) badge.textContent = compareBadgeText(fig);
+    });
+  });
+
+  /* ---------- expand button: enlarge any chapter photo ---------- */
+  document.querySelectorAll('.chapter-figure').forEach(function (fig) {
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'expand-btn';
+    btn.setAttribute('aria-label', 'Enlarge photo');
+    btn.textContent = '\u2922';
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var srcImg = fig.querySelector('.compare-hd') || fig.querySelector('img');
+      if (fig.classList.contains('photo-compare') && fig.classList.contains('showing-original')) {
+        srcImg = fig.querySelector('.compare-orig') || srcImg;
+      }
+      if (!srcImg) return;
+      var cap = fig.querySelector('figcaption');
+      openLightbox(srcImg.src, srcImg.alt || '', cap ? cap.textContent : '');
+    });
+    fig.appendChild(btn);
+  });
+
   var _applyLang = applyLang;
   applyLang = function (lang) {
     _applyLang(lang);
