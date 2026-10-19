@@ -332,3 +332,9 @@ html[lang="te"] .kicker{letter-spacing:.1em}
 .photo-compare.showing-original .restore-tag{background:rgba(15,12,8,.72)}
 
 .tap-hint{text-align:center;font-size:.72rem;color:var(--ink-soft);font-style:italic;opacity:.7;margin:.1rem 0 .8rem}
+
+/* ---------- passport portrait grid ---------- */
+.portrait-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-top:2rem}
+.portrait-cell{background:#fff;padding:.4rem;box-shadow:0 8px 24px rgba(26,20,16,.12)}
+.portrait-cell img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:sepia(.1)}
+@media(max-width:760px){.portrait-grid{grid-template-columns:repeat(2,1fr);gap:.6rem}}
