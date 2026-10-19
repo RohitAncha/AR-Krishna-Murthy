@@ -14,14 +14,14 @@
 }
 html[lang="te"]{ --font-display:'Noto Serif Telugu','Cormorant Garamond',serif; }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:clip}
 body{
   font-family:var(--font-body);
   background:var(--paper);
   color:var(--ink);
   line-height:1.7;
   -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
+  overflow-x:clip;
 }
 img{max-width:100%;display:block}
 .wrap{max-width:1120px;margin:0 auto;padding:0 clamp(1.25rem,4vw,2.5rem)}
@@ -241,6 +241,7 @@ html[lang="te"] .kicker{letter-spacing:.1em}
   .chapter-grid{gap:1.8rem}
   .chapter-figure{transform:none;box-shadow:0 10px 30px rgba(26,20,16,.14);max-width:none}
   .figure-pair{gap:1.2rem}
+  .figure-pair .chapter-figure:nth-child(2){transform:none}
 
   /* gallery -> 2-col thumb grid */
   .gallery-grid{grid-template-columns:repeat(2,1fr);gap:.7rem;margin-top:1.8rem}
@@ -265,6 +266,8 @@ html[lang="te"] .kicker{letter-spacing:.1em}
   /* restore tag -> slightly larger touch area */
   .restore-tag{font-size:.68rem;padding:.34rem .7rem}
   .tap-hint{font-size:.78rem}
+  /* no tilted elements on mobile, period */
+  .chapter-figure,.catalogue-carousel{transform:none !important}
 }
 @media(max-width:380px){
   .gallery-grid{gap:.55rem}
