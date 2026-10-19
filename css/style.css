@@ -268,6 +268,14 @@ html[lang="te"] .kicker{letter-spacing:.1em}
   .tap-hint{font-size:.78rem}
   /* no tilted elements on mobile, period */
   .chapter-figure,.catalogue-carousel{transform:none !important}
+
+  /* absolute overflow lockdown */
+  html,body{overflow-x:hidden !important;max-width:100vw;width:100%}
+  body{position:relative}
+  img,figure,section,div,header,footer,nav{max-width:100%}
+  .hero-bg{inset:0}
+  .preloader-name{letter-spacing:.2em;font-size:.75rem;white-space:normal}
+  .kicker{letter-spacing:.28em}
 }
 @media(max-width:380px){
   .gallery-grid{gap:.55rem}
