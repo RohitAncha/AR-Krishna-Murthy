@@ -218,7 +218,9 @@ html[lang="te"] .kicker{letter-spacing:.1em}
     flex-direction:column;align-items:center;justify-content:center;gap:1.8rem;
     background:rgba(19,16,9,.97);backdrop-filter:blur(12px);
     opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s;
+    pointer-events:none;
   }
+  .site-nav.open{pointer-events:auto}
   .site-nav.open{opacity:1;visibility:visible}
   .site-nav a{font-size:1.15rem;letter-spacing:.14em}
   .site-header{padding:.8rem 1.1rem}
@@ -247,7 +249,7 @@ html[lang="te"] .kicker{letter-spacing:.1em}
   .g-item img{aspect-ratio:1/1}
 
   /* carousel -> edge-to-edge swipe */
-  .catalogue-carousel{transform:none;max-width:none;margin:0 -.4rem;box-shadow:0 10px 30px rgba(26,20,16,.14)}
+  .catalogue-carousel{transform:none;max-width:none;margin:0;box-shadow:0 10px 30px rgba(26,20,16,.14)}
   .carousel-prev,.carousel-next{width:2.8rem;height:2.8rem}
 
   /* timeline -> tighter */
