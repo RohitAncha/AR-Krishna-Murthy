@@ -241,3 +241,16 @@ html[lang="te"] .kicker{letter-spacing:.1em}
 .carousel-dots button{width:.6rem;height:.6rem;border-radius:50%;border:none;background:#d8cdb4;cursor:pointer;padding:0}
 .carousel-dots button.active{background:#8a6d3b}
 .swipe-hint{text-align:center;font-size:.82rem;color:var(--ink-soft);font-style:italic;padding:0 0 1rem}
+
+/* ---------- minimal restored tag ---------- */
+.restore-tag{
+  position:absolute;top:.55rem;left:.55rem;z-index:2;
+  font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  padding:.28rem .6rem;border-radius:4px;
+  background:rgba(15,12,8,.58);color:#f6f0e1;
+  pointer-events:none;white-space:nowrap;
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+}
+.photo-compare.showing-original .restore-tag{background:rgba(15,12,8,.72)}
+
+.tap-hint{text-align:center;font-size:.72rem;color:var(--ink-soft);font-style:italic;opacity:.7;margin:.1rem 0 .8rem}
