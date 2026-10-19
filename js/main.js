@@ -178,6 +178,27 @@
     fig.appendChild(btn);
   });
 
+  /* ---------- expand button for gallery items ---------- */
+  document.querySelectorAll('.g-item').forEach(function (item) {
+    if (item.querySelector('.g-expand-btn')) return;
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'g-expand-btn';
+    btn.setAttribute('aria-label', 'Enlarge image');
+    btn.innerHTML = '<span>\u2922</span> View larger';
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var img = item.querySelector('.compare-hd') || item.querySelector('img');
+      if (item.classList.contains('photo-compare') && item.classList.contains('showing-original')) {
+        img = item.querySelector('.compare-orig') || img;
+      }
+      if (!img) return;
+      var cap = item.querySelector('figcaption');
+      openLightbox(img.src, img.alt || '', cap ? cap.textContent : '');
+    });
+    item.appendChild(btn);
+  });
+
   var _applyLang = applyLang;
   applyLang = function (lang) {
     _applyLang(lang);
