@@ -226,3 +226,18 @@ html[lang="te"] .kicker{letter-spacing:.1em}
 .photo-compare.showing-original .compare-badge{background:rgba(120,72,20,.78)}
 @media(max-width:720px){.figure-pair{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.compare-frame img{transition:none}}
+
+/* ---------- catalogue swipe carousel ---------- */
+.catalogue-carousel{background:#fff;padding:.7rem .7rem 0;box-shadow:0 18px 50px rgba(26,20,16,.16);transform:rotate(-.6deg);max-width:640px;margin:0 auto}
+.carousel-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.carousel-track::-webkit-scrollbar{display:none}
+.carousel-slide{flex:0 0 100%;scroll-snap-align:center;text-align:center}
+.carousel-slide img{width:100%;height:auto;filter:sepia(.14) contrast(1.02)}
+.carousel-slide figcaption{padding:.9rem .4rem 1rem;font-size:.88rem;color:var(--ink-soft);font-style:italic}
+.carousel-nav{display:flex;align-items:center;justify-content:center;gap:1rem;padding:.2rem 0 .6rem}
+.carousel-prev,.carousel-next{width:2.4rem;height:2.4rem;border-radius:50%;border:1px solid rgba(26,20,16,.25);background:#fff;font-size:1.3rem;line-height:1;cursor:pointer;color:#3a2e20}
+.carousel-prev:hover,.carousel-next:hover{background:#f4ecdc}
+.carousel-dots{display:flex;gap:.45rem}
+.carousel-dots button{width:.6rem;height:.6rem;border-radius:50%;border:none;background:#d8cdb4;cursor:pointer;padding:0}
+.carousel-dots button.active{background:#8a6d3b}
+.swipe-hint{text-align:center;font-size:.82rem;color:var(--ink-soft);font-style:italic;padding:0 0 1rem}
