@@ -342,3 +342,9 @@ html[lang="te"] .kicker{letter-spacing:.1em}
 .portrait-cell{background:#fff;padding:.4rem;box-shadow:0 8px 24px rgba(26,20,16,.12)}
 .portrait-cell img{width:100%;aspect-ratio:3/4;object-fit:cover;filter:sepia(.1)}
 @media(max-width:760px){.portrait-grid{grid-template-columns:repeat(2,1fr);gap:.6rem}}
+
+/* ---------- gallery expand button ---------- */
+.g-expand-btn{display:flex;align-items:center;justify-content:center;gap:.4rem;width:100%;margin:.2rem 0 .6rem;padding:.55rem;border:1px solid rgba(26,20,16,.2);border-radius:.4rem;background:transparent;color:var(--ink-soft);font-size:.78rem;cursor:pointer;font-family:inherit}
+.g-expand-btn span{font-size:1rem;line-height:1}
+.g-expand-btn:hover{background:rgba(26,20,16,.06)}
+@media(max-width:760px){.g-expand-btn{padding:.7rem;font-size:.82rem}}
