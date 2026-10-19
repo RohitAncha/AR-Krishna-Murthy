@@ -15,6 +15,26 @@
   // safety: never trap the user behind the preloader
   setTimeout(hidePreloader, 3500);
 
+  /* ---------- mobile nav ---------- */
+  var navToggle = document.querySelector('.nav-toggle');
+  var siteNav = document.querySelector('.site-nav');
+  if (navToggle && siteNav) {
+    navToggle.addEventListener('click', function () {
+      var open = siteNav.classList.toggle('open');
+      navToggle.classList.toggle('open', open);
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    siteNav.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        siteNav.classList.remove('open');
+        navToggle.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
   /* ---------- language toggle ---------- */
   var toggle = document.getElementById('langToggle');
   var opts = toggle ? toggle.querySelectorAll('.lang-opt') : [];
