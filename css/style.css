@@ -272,7 +272,10 @@ html[lang="te"] .kicker{letter-spacing:.1em}
   /* absolute overflow lockdown */
   html,body{overflow-x:hidden !important;max-width:100vw;width:100%}
   body{position:relative}
-  img,figure,section,div,header,footer,nav{max-width:100%}
+  /* carousel keeps its internal swipe scroll */
+  .catalogue-carousel,.carousel-track,.carousel-slide{max-width:none}
+  .carousel-track{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .carousel-slide{flex:0 0 100%;min-width:100%}
   .hero-bg{inset:0}
   .preloader-name{letter-spacing:.2em;font-size:.75rem;white-space:normal}
   .kicker{letter-spacing:.28em}
