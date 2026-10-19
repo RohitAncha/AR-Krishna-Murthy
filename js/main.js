@@ -117,7 +117,7 @@
   }
   document.querySelectorAll('.photo-compare').forEach(function (fig) {
     var frame = fig.querySelector('.compare-frame');
-    var badge = fig.querySelector('.compare-badge');
+    var badge = fig.querySelector('.restore-tag');
     if (!frame || !badge) return;
     badge.textContent = compareBadgeText(fig);
     frame.addEventListener('click', function (e) {
@@ -133,7 +133,7 @@
       var fig = hint.closest('.photo-compare');
       if (!fig) return;
       fig.classList.toggle('showing-original');
-      var badge = fig.querySelector('.compare-badge');
+      var badge = fig.querySelector('.restore-tag');
       if (badge) badge.textContent = compareBadgeText(fig);
     });
   });
@@ -162,7 +162,7 @@
   applyLang = function (lang) {
     _applyLang(lang);
     document.querySelectorAll('.photo-compare').forEach(function (fig) {
-      var badge = fig.querySelector('.compare-badge');
+      var badge = fig.querySelector('.restore-tag');
       if (badge) badge.textContent = compareBadgeText(fig);
     });
   };
