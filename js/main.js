@@ -166,5 +166,53 @@
       if (badge) badge.textContent = compareBadgeText(fig);
     });
   };
+  /* ---------- catalogue swipe carousel ---------- */
+  document.querySelectorAll('.catalogue-carousel').forEach(function (car) {
+    var track = car.querySelector('.carousel-track');
+    var slides = car.querySelectorAll('.carousel-slide');
+    var dotsWrap = car.querySelector('.carousel-dots');
+    var prev = car.querySelector('.carousel-prev');
+    var next = car.querySelector('.carousel-next');
+    if (!track || !slides.length) return;
+
+    // build dots
+    var dots = [];
+    slides.forEach(function (_, i) {
+      var d = document.createElement('button');
+      d.setAttribute('aria-label', 'Go to spread ' + (i + 1));
+      d.addEventListener('click', function () { goTo(i); });
+      dotsWrap.appendChild(d);
+      dots.push(d);
+    });
+
+    function current() {
+      var w = track.clientWidth || 1;
+      return Math.round(track.scrollLeft / w);
+    }
+    function goTo(i) {
+      var w = track.clientWidth || 1;
+      i = Math.max(0, Math.min(slides.length - 1, i));
+      track.scrollTo({ left: i * w, behavior: 'smooth' });
+    }
+    function update() {
+      var i = current();
+      dots.forEach(function (d, j) { d.classList.toggle('active', j === i); });
+    }
+    track.addEventListener('scroll', function () {
+      window.requestAnimationFrame(update);
+    }, { passive: true });
+    if (prev) prev.addEventListener('click', function () { goTo(current() - 1); });
+    if (next) next.addEventListener('click', function () { goTo(current() + 1); });
+    // tap a slide to open in lightbox
+    slides.forEach(function (slide) {
+      slide.addEventListener('click', function () {
+        var img = slide.querySelector('img');
+        var cap = slide.querySelector('figcaption');
+        openLightbox(img.src, img.alt, cap ? cap.textContent : '');
+      });
+    });
+    update();
+  });
+
 
 })();
